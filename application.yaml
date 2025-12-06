@@ -2,17 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx-application
-  namespace: argocd
+  namespace: infra-tools
 spec:
   project: default
   source:
-    repoURL: 'https://charts.bitnami.com/bitnami'
-    chart: nginx
-    targetRevision: 17.1.2
-    helm:
-      values: |
-        service:
-          type: LoadBalancer
+    repoURL: 'https://github.com/samatwa/goit-argo'
+    path: namespaces/application
+    targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: application
@@ -20,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
