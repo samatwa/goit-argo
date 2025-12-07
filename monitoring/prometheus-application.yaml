@@ -13,6 +13,13 @@ spec:
     targetRevision: 15.0.4
     helm:
       releaseName: prometheus
+      values: |
+        alertmanager:
+          persistence:
+            enabled: false
+        server:
+          persistence:
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
