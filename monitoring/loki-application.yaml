@@ -7,10 +7,11 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
+
   source:
     repoURL: https://grafana.github.io/helm-charts
     chart: loki-stack
-    targetRevision: 2.9.10   # пример версии
+    targetRevision: 2.9.10
     helm:
       releaseName: loki
       values: |
@@ -20,9 +21,11 @@ spec:
 
         promtail:
           enabled: true
+
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
+
   syncPolicy:
     automated:
       prune: true
