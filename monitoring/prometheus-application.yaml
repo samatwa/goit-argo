@@ -4,7 +4,7 @@ metadata:
   name: prometheus
   namespace: infra-tools
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -15,10 +15,10 @@ spec:
       releaseName: prometheus
       values: |
         alertmanager:
-          persistence:
+          persistentVolume:
             enabled: false
         server:
-          persistence:
+          persistentVolume:
             enabled: false
   destination:
     server: https://kubernetes.default.svc
@@ -28,4 +28,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
