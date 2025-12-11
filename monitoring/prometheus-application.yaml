@@ -13,7 +13,7 @@ spec:
       releaseName: prometheus
       values: |
         alertmanager:
-          persistentVolume:
+          persistence:
             enabled: false
         server:
           persistentVolume:
