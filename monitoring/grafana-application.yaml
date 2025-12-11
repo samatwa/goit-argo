@@ -21,16 +21,16 @@ spec:
         adminUser: admin
         adminPassword: admin
 
-        # --- ВАЖНО! Sidecar чтобы автоматически подтягивать dashboards ---
+        # --- Sidecar только для дашбордов ---
         sidecar:
           dashboards:
             enabled: true
             label: grafana_dashboard
             searchNamespace: ALL
           datasources:
-            enabled: true
+            enabled: false   # <-- выключаем, чтобы не было второго default
 
-        # --- Default datasources ---
+        # --- Явно прописываем datasources ---
         datasources:
           datasources.yaml:
             apiVersion: 1
@@ -39,7 +39,7 @@ spec:
                 type: prometheus
                 url: http://prometheus-server.monitoring.svc.cluster.local
                 access: proxy
-                isDefault: true
+                isDefault: true   # единственный default
 
               - name: Loki
                 type: loki

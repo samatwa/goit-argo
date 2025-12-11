@@ -3,14 +3,12 @@ kind: Application
 metadata:
   name: prometheus
   namespace: infra-tools
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: prometheus
-    targetRevision: 15.0.4
+    targetRevision:  27.50.1  
     helm:
       releaseName: prometheus
       values: |
