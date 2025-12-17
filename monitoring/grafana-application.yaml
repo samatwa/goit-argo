@@ -21,16 +21,13 @@ spec:
         adminUser: admin
         adminPassword: admin
 
-        # --- Sidecar только для дашбордов ---
         sidecar:
           dashboards:
             enabled: true
             label: grafana_dashboard
             searchNamespace: ALL
           datasources:
-            enabled: false   # <-- выключаем, чтобы не было второго default
-
-        # --- Явно прописываем datasources ---
+            enabled: true
         datasources:
           datasources.yaml:
             apiVersion: 1
