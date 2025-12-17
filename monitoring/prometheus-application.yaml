@@ -5,22 +5,32 @@ metadata:
   namespace: infra-tools
 spec:
   project: default
+
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: prometheus
-    targetRevision:  27.50.1  
+    targetRevision: 27.50.1
     helm:
       releaseName: prometheus
       values: |
         alertmanager:
           persistence:
             enabled: false
+
         server:
           persistentVolume:
             enabled: false
+
+          extraScrapeConfigs:
+            enabled: true
+            secret:
+              name: prometheus-additional-scrape-configs
+              key: additionalScrapeConfigs.yaml
+
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
+
   syncPolicy:
     automated:
       prune: true
