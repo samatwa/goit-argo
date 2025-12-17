@@ -42,6 +42,7 @@ spec:
                 type: loki
                 url: http://loki.monitoring.svc.cluster.local:3100
                 access: proxy
+                isDefault: false
                 jsonData:
                   maxLines: 5000
 
