@@ -45,6 +45,8 @@ spec:
                 isDefault: false
                 jsonData:
                   maxLines: 5000
+                basicAuth: false      
+                editable: false
 
   destination:
     server: https://kubernetes.default.svc
