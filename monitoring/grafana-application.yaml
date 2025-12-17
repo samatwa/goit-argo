@@ -36,7 +36,7 @@ spec:
                 type: prometheus
                 url: http://prometheus-server.monitoring.svc.cluster.local
                 access: proxy
-                isDefault: true   # единственный default
+                isDefault: true
 
               - name: Loki
                 type: loki
